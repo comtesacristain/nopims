@@ -8,8 +8,7 @@ NOPTA_SHEET_NAME = "NOPTA-OF-Wells"
 WELLS_ROOT = "/nas/pmd/repos/open/Wells/Regulated"
 
 
-import os
-import xlrd
+import os, re, xlrd
 
 workbook = xlrd.open_workbook(NOPTA_FILE)
 
@@ -25,6 +24,7 @@ while i < num_rows:
     copied = row[COPIED_COL].value
     if not staged and not copied:
         state_folder = row[TITLE_COL].value.split('/')[0].split('-')[0]
+        state_folder = re.sub("[0-9]",'',state_folder)
         activity_name = row[ACTIVITY_NAME_COL].value
         print state_folder
         #print activity_name
