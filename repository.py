@@ -25,6 +25,8 @@ while i < num_rows:
     if not staged and not copied:
         state_folder = row[TITLE_COL].value.split('/')[0].split('-')[0]
         state_folder = re.sub("[0-9]",'',state_folder)
+        if state_folder == "T": # catch the 'T' instance
+            state_folder = "TAS"
         activity_name = row[ACTIVITY_NAME_COL].value
         print state_folder
         #print activity_name
