@@ -3,16 +3,16 @@ ACTIVITY_NAME_COL = 3
 STAGED_COL = 9
 COPIED_COL = 8
 NOPTA_FILE = '/Users/michael/Public/nopims/NOPTA_20120101_20140728_OpenFile_Well_List.xlsx'
+NOPTA_SHEET_NAME = "NOPTA-OF-Wells"
 WELLS_ROOT = '/nas/pmd/repos/open/Wells/Regulated'
 
-DIRS = ['/nas/pm','']
 
 import os
 import openpyxl as px
 
 workbook = px.load_workbook(NOPTA_FILE,use_iterators = True)
 
-sheet = workbook.get_sheet_by_name(name = "NOPTA-OF-Wells")
+sheet = workbook.get_sheet_by_name(name = NOPTA_SHEET_NAME)
 
 for row in sheet.iter_rows():
     staged = row[STAGED_COL].value
