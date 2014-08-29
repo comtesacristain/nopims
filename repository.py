@@ -27,7 +27,7 @@ while i < num_rows:
         state_folder = re.sub("[0-9]",'',state_folder)
         if state_folder == "T": # catch the 'T' instance
             state_folder = "TAS"
-        activity_name = activity_name_parse(row[ACTIVITY_NAME_COL].value)
+        activity_name= activity_name_parse(row[ACTIVITY_NAME_COL].value)
         
         if os.path.join(WELLS_ROOT,state_folder):
             search_path = os.path.join(WELLS_ROOT,state_folder)
@@ -52,6 +52,6 @@ def find_dirs(sp, an, lvl = 1):
 
 def activity_name_parse(string):
     string = re.sub("\([^)]+\)",'',string).strip() # Remove parentheses and strip trailing and leading spaces
-    
-    return re.sub("\([^)]+\)",'',string).strip().replace(' ','_')
+    string =  re.sub("(ST([0-9])|L([0-9]))",'',string).strip() #Remove SH
+    return string.replace(' ','_')
     
