@@ -30,15 +30,19 @@ def run_me():
                 find_dirs(search_path,activity_name)
             else:
                 search_path = WELLS_ROOT
-                print(search_path)
-                print activity_name
+                find_dirs(search_path,activity_name,2)
         i += 1
 
 def find_dirs(sp, an, lvl = 1):
+    directories = []
     dirs=os.listdir(sp)
-    directories = filter(lambda x: an in x, dirs)
+    if lvl > 1:
+        for x in dirs:
+            directories += find_dirs(os.path.join(sp,x),an, lvl-1)
+    directories += filter(lambda x: an in x, dirs)
     if directories.__len__ > 1:
         print directories
+    return directories
 #
 #  for filename in filenames:
 #    print os.path.join(dirname, filename)
