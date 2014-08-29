@@ -33,7 +33,7 @@ while i < num_rows:
         else:
             search_path = WELLS_ROOT
         print(search_path)
-        #print activity_name
+        print activity_name
     i += 1
         #directory_string = activity_name.replace(' ','_')
         #for root, dirs, files in os.walk(WELLS_ROOT):
