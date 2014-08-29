@@ -44,9 +44,7 @@ while i < num_rows:
 def find_dirs(sp, an, lvl = 1):
     #if lvl ==2:
     #    return
-    #elif:
-        
-        
+    #elif:   
 #
 #  for filename in filenames:
 #    print os.path.join(dirname, filename)
