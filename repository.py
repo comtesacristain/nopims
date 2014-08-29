@@ -28,18 +28,25 @@ while i < num_rows:
         if state_folder == "T": # catch the 'T' instance
             state_folder = "TAS"
         activity_name = row[ACTIVITY_NAME_COL].value
+        activity_name = re.sub("\([^)]+\)",'',activity_name).strip().replace(' ','_')
         if os.path.join(WELLS_ROOT,state_folder):
             search_path = os.path.join(WELLS_ROOT,state_folder)
+            find_dirs(search_path,activity_name)
         else:
             search_path = WELLS_ROOT
         print(search_path)
-        #print activity_name
+        print activity_name
     i += 1
         #directory_string = activity_name.replace(' ','_')
         #for root, dirs, files in os.walk(WELLS_ROOT):
             #print dirs
-    
 
+def find_dirs(sp, an, lvl = 1):
+    if lvl ==2:
+        return
+    elif:
+        
+        
 #
 #  for filename in filenames:
 #    print os.path.join(dirname, filename)
