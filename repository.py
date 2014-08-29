@@ -22,8 +22,6 @@ def run_me():
         if not staged and not copied:
             state_folder = row[TITLE_COL].value.split('/')[0].split('-')[0]
             state_folder = re.sub("[0-9]",'',state_folder)
-            if state_folder == "T": # catch the 'T' instance
-                state_folder = "TAS"
             activity_name= activity_name_parse(row[ACTIVITY_NAME_COL].value)
             if os.path.isdir(os.path.join(WELLS_ROOT,state_folder)):
                 search_path = os.path.join(WELLS_ROOT,state_folder)
