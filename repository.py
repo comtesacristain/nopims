@@ -49,5 +49,5 @@ def activity_name_parse(string):
     string =  re.sub("(ST([0-9])|L([0-9]))",'',string).strip() #Remove SH
     return string.replace(' ','_')
 
-run_me
+run_me()
     
