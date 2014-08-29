@@ -28,7 +28,11 @@ while i < num_rows:
         if state_folder == "T": # catch the 'T' instance
             state_folder = "TAS"
         activity_name = row[ACTIVITY_NAME_COL].value
-        print state_folder
+        if os.path.join(WELLS_ROOT,state_folder):
+            search_path = os.path.join(WELLS_ROOT,state_folder)
+        else:
+            search_path = WELLS_ROOT
+        print(search_path)
         #print activity_name
     i += 1
         #directory_string = activity_name.replace(' ','_')
