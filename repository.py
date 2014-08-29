@@ -42,9 +42,9 @@ while i < num_rows:
             #print dirs
 
 def find_dirs(sp, an, lvl = 1):
-    if lvl ==2:
-        return
-    elif:
+    #if lvl ==2:
+    #    return
+    #elif:
         
         
 #
