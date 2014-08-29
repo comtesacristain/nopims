@@ -10,36 +10,31 @@ WELLS_ROOT = "/nas/pmd/repos/open/Wells/Regulated"
 
 import os, re, xlrd
 
-workbook = xlrd.open_workbook(NOPTA_FILE)
+def run_me():
+    workbook = xlrd.open_workbook(NOPTA_FILE)
+    sheet = workbook.sheet_by_name(NOPTA_SHEET_NAME)
+    num_rows = sheet.nrows
+    i = 1
 
-sheet = workbook.sheet_by_name(NOPTA_SHEET_NAME)
-
-num_rows = sheet.nrows
-i = 1
-
-while i < num_rows:
-    
-    row = sheet.row(i)
-    staged = row[STAGED_COL].value
-    copied = row[COPIED_COL].value
-    if not staged and not copied:
-        state_folder = row[TITLE_COL].value.split('/')[0].split('-')[0]
-        state_folder = re.sub("[0-9]",'',state_folder)
-        if state_folder == "T": # catch the 'T' instance
-            state_folder = "TAS"
-        activity_name= activity_name_parse(row[ACTIVITY_NAME_COL].value)
+    while i < num_rows:    
+        row = sheet.row(i)
+        staged = row[STAGED_COL].value
+        copied = row[COPIED_COL].value
+        if not staged and not copied:
+            state_folder = row[TITLE_COL].value.split('/')[0].split('-')[0]
+            state_folder = re.sub("[0-9]",'',state_folder)
+            if state_folder == "T": # catch the 'T' instance
+                state_folder = "TAS"
+                activity_name= activity_name_parse(row[ACTIVITY_NAME_COL].value)
         
-        if os.path.join(WELLS_ROOT,state_folder):
-            search_path = os.path.join(WELLS_ROOT,state_folder)
-            find_dirs(search_path,activity_name)
-        else:
-            search_path = WELLS_ROOT
-        print(search_path)
-        print activity_name
-    i += 1
-        #directory_string = activity_name.replace(' ','_')
-        #for root, dirs, files in os.walk(WELLS_ROOT):
-            #print dirs
+                if os.path.join(WELLS_ROOT,state_folder):
+                    search_path = os.path.join(WELLS_ROOT,state_folder)
+                    find_dirs(search_path,activity_name)
+                else:
+                    search_path = WELLS_ROOT
+                    print(search_path)
+                    print activity_name
+                    i += 1
 
 def find_dirs(sp, an, lvl = 1):
     dirs=os.listdir(sp)
@@ -54,4 +49,6 @@ def activity_name_parse(string):
     string = re.sub("\([^)]+\)",'',string).strip() # Remove parentheses and strip trailing and leading spaces
     string =  re.sub("(ST([0-9])|L([0-9]))",'',string).strip() #Remove SH
     return string.replace(' ','_')
+
+run_me
     
