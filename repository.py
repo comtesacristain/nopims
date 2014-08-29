@@ -24,8 +24,7 @@ def run_me():
             state_folder = re.sub("[0-9]",'',state_folder)
             if state_folder == "T": # catch the 'T' instance
                 state_folder = "TAS"
-                activity_name= activity_name_parse(row[ACTIVITY_NAME_COL].value)
-        
+            activity_name= activity_name_parse(row[ACTIVITY_NAME_COL].value)
             if os.path.join(WELLS_ROOT,state_folder):
                 search_path = os.path.join(WELLS_ROOT,state_folder)
                 find_dirs(search_path,activity_name)
