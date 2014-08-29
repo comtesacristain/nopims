@@ -41,7 +41,7 @@ while i < num_rows:
         #for root, dirs, files in os.walk(WELLS_ROOT):
             #print dirs
 
-def find_dirs(sp, an, lvl = 1):
+#def find_dirs(sp, an, lvl = 1):
 #
 #  for filename in filenames:
 #    print os.path.join(dirname, filename)
