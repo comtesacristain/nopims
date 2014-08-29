@@ -31,7 +31,7 @@ while i < num_rows:
         activity_name = re.sub("\([^)]+\)",'',activity_name).strip().replace(' ','_')
         if os.path.join(WELLS_ROOT,state_folder):
             search_path = os.path.join(WELLS_ROOT,state_folder)
-            find_dirs(search_path,activity_name)
+            #find_dirs(search_path,activity_name)
         else:
             search_path = WELLS_ROOT
         print(search_path)
