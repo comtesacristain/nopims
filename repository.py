@@ -28,9 +28,13 @@ def run_me():
                 find_dirs(search_path,activity_name)
             else:
                 search_path = WELLS_ROOT
-                x=find_dirs(search_path,activity_name,2)
-                print x
+                dir_list=find_dirs(search_path,activity_name,2)
+                associate_wells_and_paths()
+                print dir_list
         i += 1
+
+def associate_wells_and_paths():
+    print "blabla"
 
 def find_dirs(sp, an, lvl = 1):
     directories = []
@@ -39,16 +43,15 @@ def find_dirs(sp, an, lvl = 1):
         for x in dirs:
             directories += find_dirs(os.path.join(sp,x),an, lvl-1)
     directories += filter(lambda x: an in x, dirs)
-    #print directories
     return directories
-#
-#  for filename in filenames:
-#    print os.path.join(dirname, filename)
+
 
 def activity_name_parse(string):
     string = re.sub("\([^)]+\)",'',string).strip() # Remove parentheses and strip trailing and leading spaces
     string =  re.sub("(ST([0-9])|L([0-9]))",'',string).strip() #Remove SH
     return string.replace(' ','_')
+
+
 
 run_me()
     
