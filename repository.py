@@ -17,18 +17,20 @@ def run_me():
     i = 1
     while i < num_rows:    
         row = sheet.row(i)
+        title = row[TITLE_COL].value
+        activity_name = row[ACTIVITY_NAME_COL].value
         staged = row[STAGED_COL].value
         copied = row[COPIED_COL].value
         if not staged and not copied:
-            state_folder = row[TITLE_COL].value.split('/')[0].split('-')[0]
+            state_folder = title.split('/')[0].split('-')[0]
             state_folder = re.sub("[0-9]",'',state_folder)
-            activity_name= activity_name_parse(row[ACTIVITY_NAME_COL].value)
+            activity_key= activity_key_parse(activity_name)
             if os.path.isdir(os.path.join(WELLS_ROOT,state_folder)):
                 search_path = os.path.join(WELLS_ROOT,state_folder)
-                find_dirs(search_path,activity_name)
+                find_dirs(search_path,activity_key)
             else:
                 search_path = WELLS_ROOT
-                dir_list=find_dirs(search_path,activity_name,2)
+                dir_list=find_dirs(search_path,activity_key,2)
                 associate_wells_and_paths()
                 print dir_list
         i += 1
@@ -36,20 +38,20 @@ def run_me():
 def associate_wells_and_paths():
     print "blabla"
 
-def find_dirs(sp, an, lvl = 1):
+def find_dirs(sp, ak, lvl = 1):
     directories = []
     dirs=os.listdir(sp)
     if lvl > 1:
         for x in dirs:
-            directories += find_dirs(os.path.join(sp,x),an, lvl-1)
-    directories += filter(lambda x: an in x, dirs)
+            directories += find_dirs(os.path.join(sp,x),ak, lvl-1)
+    directories += filter(lambda x: ak in x, dirs)
     return directories
 
 
-def activity_name_parse(string):
-    string = re.sub("\([^)]+\)",'',string).strip() # Remove parentheses and strip trailing and leading spaces
-    string =  re.sub("(ST([0-9])|L([0-9]))",'',string).strip() #Remove SH
-    return string.replace(' ','_')
+def activity_key_parse(an):
+    key = re.sub("\([^)]+\)",'',an).strip() # Remove parentheses and strip trailing and leading spaces
+    key =  re.sub("(ST([0-9])|L([0-9]))",'',key).strip() #Remove SH
+    return key.replace(' ','_')
 
 
 
