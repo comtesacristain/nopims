@@ -30,15 +30,17 @@ def run_me():
                 find_dirs(search_path,activity_key)
             else:
                 search_path = WELLS_ROOT
-                dir_list=find_dirs(search_path,activity_key,2)
+                paths=find_paths(search_path,activity_key,2)
                 associate_wells_and_paths()
+                print title
+                print activity_name
                 print dir_list
         i += 1
 
-def associate_wells_and_paths():
+def associate_wells_and_paths(t,an,dirs):
     print "blabla"
 
-def find_dirs(sp, ak, lvl = 1):
+def find_paths(sp, ak, lvl = 1):
     directories = []
     dirs=os.listdir(sp)
     if lvl > 1:
