@@ -31,13 +31,13 @@ def run_me():
             else:
                 search_path = WELLS_ROOT
                 paths=find_paths(search_path,activity_key,2)
-                associate_wells_and_paths()
+                associate_wells_and_paths(title,activity_name,paths)
                 print title
                 print activity_name
                 print dir_list
         i += 1
 
-def associate_wells_and_paths(t,an,dirs):
+def associate_wells_and_paths(t,an,p):
     print "blabla"
 
 def find_paths(sp, ak, lvl = 1):
