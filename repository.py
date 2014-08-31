@@ -27,7 +27,7 @@ def run_me():
             activity_key= activity_key_parse(activity_name)
             if os.path.isdir(os.path.join(WELLS_ROOT,state_folder)):
                 search_path = os.path.join(WELLS_ROOT,state_folder)
-                find_dirs(search_path,activity_key)
+                find_paths(search_path,activity_key)
             else:
                 search_path = WELLS_ROOT
                 paths=find_paths(search_path,activity_key,2)
