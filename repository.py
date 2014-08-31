@@ -34,7 +34,7 @@ def run_me():
                 associate_wells_and_paths(title,activity_name,paths)
                 print title
                 print activity_name
-                print dir_list
+                print paths
         i += 1
 
 def associate_wells_and_paths(t,an,p):
