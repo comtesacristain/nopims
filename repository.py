@@ -44,8 +44,9 @@ def run_me():
 def associate_wells_and_paths(t,an,p):
 
     global associated_wells
-    well=None
     associated_wells[:]=[well for well in associated_wells if well.get("title") == t]
+    if well == None:
+        well = {"title": t}
     print well
     associated_wells.append(well)
     
