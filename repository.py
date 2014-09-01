@@ -50,7 +50,7 @@ def associate_wells_and_paths(t,an,p):
     if title is None:
         title = {"title": t}
     print title
-    associated_wells.append(well)
+    associated_wells.append(title)
     
 
 def find_paths(sp, ak, lvl = 1):
