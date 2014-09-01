@@ -7,6 +7,8 @@ NOPTA_FILE = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/NOPTA_2012010
 NOPTA_SHEET_NAME = "NOPTA-OF-Wells"
 WELLS_ROOT = "/nas/pmd/repos/open/Wells/Regulated"
 
+global associated_wells = []
+
 
 import os, re, xlrd
 
@@ -38,7 +40,10 @@ def run_me():
         i += 1
 
 def associate_wells_and_paths(t,an,p):
-    print "blabla"
+    associated_wells[:]=[well for well in associated_wells if well.get("title") == t]
+    print well
+    associated_wells.append(well)
+    
 
 def find_paths(sp, ak, lvl = 1):
     directories = []
