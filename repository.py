@@ -42,14 +42,16 @@ def run_me():
         i += 1
 
 def associate_wells_and_paths(t,an,p):
+
     global associated_wells
+    print associated_wells
     title = None
     for aw in associated_wells:
         if aw["title"] == an:
             title = associated_wells.pop(associated_wells.index(aw))
     if title is None:
         title = {"title": t}
-    print title
+    #print title
     associated_wells.append(title)
     
 
