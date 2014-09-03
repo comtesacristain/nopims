@@ -68,13 +68,14 @@ def associate_wells_and_paths(t,an,p):
     
 
 def find_paths(sp, ak, lvl = 1):
-    directories = []
+    paths,directories = [],[]
     dirs=os.listdir(sp)
     if lvl > 1:
         for x in dirs:
             directories += find_paths(os.path.join(sp,x),ak, lvl-1)
     directories += filter(lambda x: ak in x, dirs)
-    return directories
+    paths = map(lambda x: os.path.join(sp,x), directories)
+    return paths
 
 
 def folder_key_parse(an):
