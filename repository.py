@@ -12,7 +12,7 @@ associated_wells = []
 
 
 
-import os, re, xlrd, xlwt, shutil
+import os, re, xlrd, xlwt, shutil, openpyxl
 
 def run_me():
     global associated_wells
