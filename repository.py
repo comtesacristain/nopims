@@ -6,13 +6,13 @@ COPIED_COL = 8
 NOPTA_FILE = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/NOPTA_20120101_20140728_OpenFile_Well_List.xlsx"
 NOPTA_SHEET_NAME = "NOPTA-OF-Wells"
 WELLS_ROOT = "/nas/pmd/repos/open/Wells/Regulated"
-DEST_DIR = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/completed_well_zips/"
+DEST_DIR = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/wells_to_be_processed"
 
 associated_wells = []
 
 
 
-import os, re, xlrd, shutil
+import os, re, xlrd, xlwt, shutil
 
 def run_me():
     global associated_wells
@@ -36,8 +36,8 @@ def run_me():
             else:
                 search_path = WELLS_ROOT
                 paths=find_paths(search_path,folder_key,2)
-                associate_wells_and_paths(title,activity_name,paths)
-            #associate_wells_and_paths(title,activity_name,paths)
+                #associate_wells_and_paths(title,activity_name,paths)
+            associate_wells_and_paths(title,activity_name,paths)
         i += 1    
     print associated_wells.__len__()
     copy_wells()
@@ -48,8 +48,19 @@ def copy_wells():
         for a in aw["activities"]:
             for p in a["paths"]:
                 os.system("cp -r {0} {1}".format(p,DEST_DIR))
+                mark_copied(a["name"])
     os.system("chmod -R 775 {0}".format(DEST_DIR))
+
+def mark_copied(n):
+    wb = openpyxl.load_workbook(NOPTA_FILE,use_iterators=True)
+    ws = wb.get_sheet_by_name(NOPTA_SHEET_NAME)
+    for i, row in enumerate(ws.iter_rows()):
+        if row[ACTIVITY_NAME_COL] == n:
+            ws.cell(row = i+1,cell = COPIED_COL).value = 'X'
+    wb.save(NOPTA_FILE)
         
+    
+    
 
 def associate_wells_and_paths(t,an,p):
     global associated_wells
