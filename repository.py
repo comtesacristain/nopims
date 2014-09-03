@@ -46,7 +46,7 @@ def copy_wells():
     global associated_wells
     for aw in associated_wells:
         for act in aw["activities"]:
-            for p in a[""]:
+            for p in a["paths"]:
                 shutil.copytree(p,DESTDIR)
         
 
