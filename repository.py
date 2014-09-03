@@ -38,8 +38,7 @@ def run_me():
                 paths=find_paths(search_path,activity_key,2)
                 associate_wells_and_paths(title,activity_name,paths)
             #associate_wells_and_paths(title,activity_name,paths)
-        i += 1
-    
+        i += 1    
     print associated_wells.__len__()
     #copy_wells
     
@@ -49,7 +48,6 @@ def copy_wells():
         
 
 def associate_wells_and_paths(t,an,p):
-
     global associated_wells
     print associated_wells
     title = None
@@ -59,13 +57,12 @@ def associate_wells_and_paths(t,an,p):
     if title is None:
         title = {"title": t, "activities": []}
     activity = None
-    for activity in title["activities"]:
-        if activity["name"] == an:
-            activity = title["activities"].pop(title["activities"].index(activity))
+    for a in title["activities"]:
+        if a["name"] == an:
+            activity = title["activities"].pop(title["activities"].index(a))
     if activity is None:
         activity = {"name": an, "paths": []}
     title["activities"].append(activity)
-    #print title
     associated_wells.append(title)
     
 
