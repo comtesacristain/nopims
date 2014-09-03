@@ -43,7 +43,7 @@ def run_me():
     print associated_wells.__len__()
     #copy_wells
     
-def copy_wells:
+def copy_wells():
     global associated_wells
     for aw in associated_wells:
         
