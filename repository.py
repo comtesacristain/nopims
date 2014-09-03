@@ -6,7 +6,7 @@ COPIED_COL = 8
 NOPTA_FILE = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/NOPTA_20120101_20140728_OpenFile_Well_List.xlsx"
 NOPTA_SHEET_NAME = "NOPTA-OF-Wells"
 WELLS_ROOT = "/nas/pmd/repos/open/Wells/Regulated"
-DEST_DIR = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/completed_well_zips"
+DEST_DIR = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/completed_well_zips/"
 
 associated_wells = []
 
