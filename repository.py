@@ -47,8 +47,8 @@ def copy_wells():
     for aw in associated_wells:
         for a in aw["activities"]:
             for p in a["paths"]:
-                os.system("cp -r %s %s",p, DEST_DIR )
-                os.system("chmod -R 775 %s/*")
+                os.system("cp -r %s %s" % p, DEST_DIR )
+                os.system("chmod -R 775 %s/*" % DEST_DIR)
         
 
 def associate_wells_and_paths(t,an,p):
