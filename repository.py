@@ -12,7 +12,9 @@ associated_wells = []
 
 
 
-import os, re, xlrd, xlwt, shutil, openpyxl
+import os, re, xlrd, xlwt, shutil
+
+import openpyxl as px
 
 def run_me():
     global associated_wells
@@ -52,7 +54,7 @@ def copy_wells():
     os.system("chmod -R 775 {0}".format(DEST_DIR))
 
 def mark_copied(n):
-    wb = openpyxl.load_workbook(NOPTA_FILE,use_iterators=True)
+    wb = px.load_workbook(NOPTA_FILE,use_iterators=True)
     ws = wb.get_sheet_by_name(NOPTA_SHEET_NAME)
     for i, row in enumerate(ws.iter_rows()):
         if row[ACTIVITY_NAME_COL] == n:
