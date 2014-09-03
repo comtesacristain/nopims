@@ -57,7 +57,7 @@ def mark_copied(n):
     wb = px.load_workbook(NOPTA_FILE,use_iterators=True)
     ws = wb.get_sheet_by_name(NOPTA_SHEET_NAME)
     for i, row in enumerate(ws.iter_rows()):
-        if row[ACTIVITY_NAME_COL] == n:
+        if row[ACTIVITY_NAME_COL].value == n:
             ws.cell(row = i+1,column = COPIED_COL+1).value = 'X'
     wb.save(NOPTA_FILE)
         
