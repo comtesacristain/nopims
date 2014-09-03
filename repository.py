@@ -29,13 +29,13 @@ def run_me():
         if not staged and not copied:
             state_folder = title.split('/')[0].split('-')[0]
             state_folder = re.sub("[0-9]",'',state_folder)
-            activity_key= activity_key_parse(activity_name)
+            folder_key= folder_key_parse(activity_name)
             if os.path.isdir(os.path.join(WELLS_ROOT,state_folder)):
                 search_path = os.path.join(WELLS_ROOT,state_folder)
-                paths=find_paths(search_path,activity_key)
+                paths=find_paths(search_path,folder_key)
             else:
                 search_path = WELLS_ROOT
-                paths=find_paths(search_path,activity_key,2)
+                paths=find_paths(search_path,folder_key,2)
                 associate_wells_and_paths(title,activity_name,paths)
             #associate_wells_and_paths(title,activity_name,paths)
         i += 1    
@@ -76,7 +76,7 @@ def find_paths(sp, ak, lvl = 1):
     return directories
 
 
-def activity_key_parse(an):
+def folder_key_parse(an):
     key = re.sub("\([^)]+\)",'',an).strip() # Remove parentheses and strip trailing and leading spaces
     key =  re.sub("(ST([0-9])|L([0-9]))",'',key).strip() #Remove SH
     return key.replace(' ','_')
