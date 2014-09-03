@@ -36,8 +36,8 @@ def run_me():
             else:
                 search_path = WELLS_ROOT
                 paths=find_paths(search_path,folder_key,2)
-                #associate_wells_and_paths(title,activity_name,paths)
-            associate_wells_and_paths(title,activity_name,paths)
+                associate_wells_and_paths(title,activity_name,paths)
+            #associate_wells_and_paths(title,activity_name,paths)
         i += 1    
     print associated_wells.__len__()
     copy_wells()
