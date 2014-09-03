@@ -12,7 +12,7 @@ associated_wells = []
 
 
 
-import os, re, xlrd
+import os, re, xlrd, shutil
 
 def run_me():
     global associated_wells
@@ -40,7 +40,7 @@ def run_me():
             #associate_wells_and_paths(title,activity_name,paths)
         i += 1    
     print associated_wells.__len__()
-    copy_wells
+    copy_wells()
     
 def copy_wells():
     global associated_wells
