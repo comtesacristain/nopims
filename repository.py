@@ -46,7 +46,7 @@ def associate_wells_and_paths(t,an,p):
     print associated_wells
     title = None
     for aw in associated_wells:
-        if aw["title"] == an:
+        if aw["title"] == t:
             title = associated_wells.pop(associated_wells.index(aw))
     if title is None:
         title = {"title": t}
