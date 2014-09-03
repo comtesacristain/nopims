@@ -36,9 +36,17 @@ def run_me():
             else:
                 search_path = WELLS_ROOT
                 paths=find_paths(search_path,activity_key,2)
-            associate_wells_and_paths(title,activity_name,paths)
+                associate_wells_and_paths(title,activity_name,paths)
+            #associate_wells_and_paths(title,activity_name,paths)
         i += 1
+    
     print associated_wells.__len__()
+    #copy_wells
+    
+def copy_wells:
+    global associated_wells
+    for aw in associated_wells:
+        
 
 def associate_wells_and_paths(t,an,p):
 
@@ -49,7 +57,14 @@ def associate_wells_and_paths(t,an,p):
         if aw["title"] == t:
             title = associated_wells.pop(associated_wells.index(aw))
     if title is None:
-        title = {"title": t}
+        title = {"title": t, "activities": []}
+    activity = None
+    for activity in title["activities"]:
+        if activity["name"] == an:
+            activity = title["activities"].pop(title["activities"].index(activity))
+    if activity is None:
+        activity = {"name": an, "paths": []}
+    title["activities"].append(activity)
     #print title
     associated_wells.append(title)
     
