@@ -45,7 +45,7 @@ def run_me():
     
 def copy_wells():
     global associated_wells
-    for aw in associated_wells:
+    #for aw in associated_wells:
         
 
 def associate_wells_and_paths(t,an,p):
