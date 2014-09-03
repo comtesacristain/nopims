@@ -3,7 +3,7 @@ ACTIVITY_NAME_COL = 3
 TITLE_COL = 4
 STAGED_COL = 9
 COPIED_COL = 8
-NOPTA_FILE = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/msexton1/NOPTA_20120101_20140728_OpenFile_Well_List.xlsx"
+NOPTA_FILE = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/NOPTA_20120101_20140728_OpenFile_Well_List.xlsx"
 NOPTA_SHEET_NAME = "NOPTA-OF-Wells"
 WELLS_ROOT = "/nas/pmd/repos/open/Wells/Regulated"
 DEST_DIR = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/msexton1"
@@ -38,8 +38,8 @@ def run_me():
             else:
                 search_path = WELLS_ROOT
                 paths=find_paths(search_path,folder_key,2)
-                associate_wells_and_paths(title,activity_name,paths)
-            #associate_wells_and_paths(title,activity_name,paths)
+                #associate_wells_and_paths(title,activity_name,paths)
+            associate_wells_and_paths(title,activity_name,paths)
         i += 1    
     print associated_wells.__len__()
     copy_wells()
@@ -50,7 +50,7 @@ def copy_wells():
         for a in aw["activities"]:
             for p in a["paths"]:
                 os.system("cp -r {0} {1}".format(p,DEST_DIR))
-                mark_copied(a["name"])
+                #mark_copied(a["name"])
     os.system("chmod -R 775 {0}".format(DEST_DIR))
 
 def mark_copied(n):
@@ -58,8 +58,8 @@ def mark_copied(n):
     ws = wb.get_sheet_by_name(NOPTA_SHEET_NAME)
     for i, row in enumerate(ws.iter_rows()):
         if row[ACTIVITY_NAME_COL].value == n:
-            ws.cell(row = i+1,column = COPIED_COL+1).value = 'X'
-    wb.save(NOPTA_FILE)
+            print i
+    wb.save("test.xlsx")
         
     
     
