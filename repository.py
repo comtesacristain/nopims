@@ -6,7 +6,7 @@ COPIED_COL = 8
 NOPTA_FILE = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/NOPTA_20120101_20140728_OpenFile_Well_List.xlsx"
 NOPTA_SHEET_NAME = "NOPTA-OF-Wells"
 WELLS_ROOT = "/nas/pmd/repos/open/Wells/Regulated"
-
+DEST_DIR = "/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/completed_well_zips"
 
 associated_wells = []
 
@@ -40,11 +40,14 @@ def run_me():
             #associate_wells_and_paths(title,activity_name,paths)
         i += 1    
     print associated_wells.__len__()
-    #copy_wells
+    copy_wells
     
 def copy_wells():
     global associated_wells
-    #for aw in associated_wells:
+    for aw in associated_wells:
+        for act in aw["activities"]:
+            for p in a[""]:
+                shutil.copytree(p,DESTDIR)
         
 
 def associate_wells_and_paths(t,an,p):
