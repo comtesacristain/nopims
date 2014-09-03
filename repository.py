@@ -62,6 +62,7 @@ def associate_wells_and_paths(t,an,p):
             activity = title["activities"].pop(title["activities"].index(a))
     if activity is None:
         activity = {"name": an, "paths": []}
+    activity["paths"] += p #change to merge
     title["activities"].append(activity)
     associated_wells.append(title)
     
