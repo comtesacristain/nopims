@@ -38,7 +38,7 @@ def run_me():
                 paths=find_paths(search_path,activity_key,2)
             associate_wells_and_paths(title,activity_name,paths)
         i += 1
-    print associated_wells.__len__
+    print associated_wells.__len__()
 
 def associate_wells_and_paths(t,an,p):
 
