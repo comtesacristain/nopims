@@ -13,4 +13,6 @@ def main(root_path='/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/msutti/
         for d in to_zips:
             zf = os.path.join(folder,d)
             with ZipFile(zf+".zip", 'w') as z:
+                print "Zipping path " + zf
                 zipdir(zf,z)
+main()
