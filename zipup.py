@@ -2,9 +2,9 @@ from zipfile import ZipFile
 import os
 
 def zipdir(path, z):
-
-    for root, dirs, files in os.walk(path,topdown=False):
-        print dirs
+    print os.listdir(path)
+    #for root, dirs, files in os.walk(path,topdown=False):
+    #    print dirs
 	#for file in files:
 	#    print
             #z.write(os.path.join(root, file), os.path.basename(root))
