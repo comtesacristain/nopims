@@ -2,8 +2,7 @@ from zipfile import ZipFile
 import os
 
 def zipdir(path, z):
-    for root, dirs, files in os.walk(path,topdown=False):
-
+    for root, dirs, files in os.walk(path):
 	    for file in files:
             z.write(os.path.join(root, file), os.path.relpath(root,path))
 
