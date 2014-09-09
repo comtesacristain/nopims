@@ -2,12 +2,10 @@ from zipfile import ZipFile
 import os
 
 def zipdir(path, z):
-    print os.listdir(path)
-    #for root, dirs, files in os.walk(path,topdown=False):
-    #    print dirs
-	#for file in files:
-	#    print
-            #z.write(os.path.join(root, file), os.path.basename(root))
+    for root, dirs, files in os.walk(path,topdown=False):
+
+	    for file in files:
+            z.write(os.path.join(root, file), os.path.relpath(root,path))
 
             
 def main(root_path='/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/msutti/pytest'):
