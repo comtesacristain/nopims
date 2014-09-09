@@ -4,7 +4,7 @@ import os
 def zipdir(path, z):
     for root, dirs, files in os.walk(path):
         for file in files:
-            z.write(os.path.join(root, file), os.path.relpath(root,path))
+            z.write(os.path.join(root, file), os.path.join(os.path.relpath(root,path),file))
 
             
 def main(root_path='/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/msutti/pytest'):
