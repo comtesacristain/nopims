@@ -7,7 +7,7 @@ def zipdir(path, z):
             z.write(os.path.join(root, file), os.path.join(os.path.relpath(root,path),file))
 
             
-def main(root_path="I:/RDIS/NOPIMS_repository_remediation/msutti/pytest"):
+def main(root_path="/nas/energy/ideas/RDIS/NOPIMS_repository_remediation/msutti/01.To_Zip"):
     for f in os.listdir(root_path):
         folder = os.path.join(root_path,f)
         to_zips = os.listdir(folder)
