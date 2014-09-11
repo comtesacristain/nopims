@@ -54,6 +54,7 @@ def copy_wells():
     os.system("chmod -R 775 {0}".format(DEST_DIR))
 
 def mark_copied(n):
+    # Find a better Excel library or alternatively use a database
     wb = px.load_workbook(NOPTA_FILE,use_iterators=True)
     ws = wb.get_sheet_by_name(NOPTA_SHEET_NAME)
     for i, row in enumerate(ws.iter_rows()):

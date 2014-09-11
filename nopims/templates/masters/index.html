@@ -1,0 +1,31 @@
+<table>
+	<tr>
+		<th>NOPTA Release Date</th>
+		<th>Category Parent</th>
+		<th>Category</th>
+		<th>Activity Name</th>
+		<th>Title</th>
+		<th>Operator or Titleholder</th>
+		<th>ENO</th>
+		<th>Staff ID</th>
+		<th>Copied</th>
+		<th>Staged</th>
+		<th>Attached</th>
+	</tr>
+	{% for master in masters %}
+	
+	<tr>
+		<td>{{master.release_date}}</td>
+		<td>{{master.parent_category}}</td>
+		<td>{{master.category}}</td>
+		<td>{{master.activity_name}}</td>
+		<td>{{master.title}}</td>
+		<td>{{master.operator}}</td>
+		<td>{{master.eno}}</td>
+		<td>{{master.staff}}</td>
+		<td>{{master.copied}}</td>
+		<td>{{master.staged}}</td>
+		<td>{{master.attached}}</td>
+	</tr>
+	{% endfor %}	
+</table>

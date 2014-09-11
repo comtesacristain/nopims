@@ -1,1 +1,4 @@
 NOPTA_20120101_20140728_OpenFile_Well_List.xlsx
+*.pyc
+*.db
+*.sqlite3
