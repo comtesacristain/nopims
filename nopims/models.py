@@ -156,6 +156,6 @@ class Status(models.Model):
     name = models.TextField()
 
 class Path(models.Model):
-    master = models.ForeignKey(Master)
+    activity  = models.ManyToManyField(Activity)
     original_path=models.TextField()
     
